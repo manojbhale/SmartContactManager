@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>SCM | Contact</title>
+</head>
+<body>
+	<section>
+		<div class="card mr-3 ml-3">
+
+			<div class="card-body" th:if="${contact}">
+
+
+				<div class="container text-center">
+
+					<img style="height: 170px; width: 170px;" class="contact_picture"
+						src="" th:src="@{'/images/'+${contact.profileImage}}"
+						alt="profile photo" />
+
+					<h3 class="mt-2"
+						th:text="${contact.firstName+' '+contact.lastName }"></h3>
+
+					<!-- format style1 -->
+
+					<!-- <div class="table-responsive">
+						<table class="table ">
+							<thead>
+
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">Name</th>
+									<th scope="col">Email</th>
+									<th scope="col">Work</th>
+									<th scope="col">Phone</th>
+								</tr>
+
+							</thead>
+							<tbody>
+								<tr>
+									<td><span  th:text="${'SCM21'+contact.contactId}"></span></td>
+									<td><span th:text="${contact.firstName+' '+contact.lastName }"></span></td>
+									<td><span th:text="${contact.email}"></span></td>
+									<td><span th:text="${contact.work}"></span></td>
+									<td><span  th:text="${contact.phone}"></span></td>
+
+								</tr>
+							</tbody>
+						</table>
+
+					</div> -->
+
+					<!-- format style 2 -->
+
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col"><span
+										th:text="${'SCM21'+contact.contactId}"></span></th>
+								</tr>
+
+							</thead>
+							<tbody>
+
+
+								<tr>
+									<th scope="row">Email</th>
+									<td><span th:text="${contact.email}"></span></td>
+								</tr>
+
+								<tr>
+									<th scope="row">Work</th>
+									<td><span th:text="${contact.work}"></span></td>
+								</tr>
+
+								<tr>
+									<th scope="row">Phone</th>
+									<td><span th:text="${contact.phone}"></span></td>
+								</tr>
+
+								<tr>
+									<th>About Me</th>
+								</tr>
+							</tbody>
+						</table>
+						<div class="description">
+
+							<th:block th:utext="${contact.description}"></th:block>
+
+						</div>
+						<div class="container mt-2">
+
+							<button th:onclick="|deleteContact(${contact.contactId})|"
+								class="btn btn-danger btn-sm">Delete</button>
+
+							<form th:action="@{'/user/update-contact/'+${contact.contactId}}"
+								method="post" class="mt-2">
+
+								<button type="submit" class="btn btn-success btn-sm">Update</button>
+							</form>
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<h3 class="text-red"
+				style="margin-left: 15px; margin-top: 10px; margin-bottom: 10px;"
+				th:unless="${contact}">You don't have to permission to see this
+				contact ! please don't do it.</h3>
+		</div>
+
+
+	</section>
+
+</body>
+</html>

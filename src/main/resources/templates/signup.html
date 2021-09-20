@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>SCM | Register</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="mycard mt-4">
+						<div th:if="${session.message}"
+							th:classappend="${session.message.type}" class="alert"
+							role="alert">
+							<p class="text-center" th:text="${session.message.content}"></p>
+							<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+
+						</div>
+
+						<div class="container text-center">
+							<img style="width: 70px" src="" th:src="@{/images/regis.png}"
+								alt="" />
+						</div>
+
+						<h2 class="text-center font-weight-bold">Registration-Page !!</h2>
+						<form action="" th:action="@{/do_register}" method="post"
+							th:object="${user}">
+							<!-- first Name Field -->
+							<div class="mb-3">
+								<label for="fName" class="form-label">First Name </label> <input
+									type="text" class="form-control"
+									th:classappend="${#fields.hasErrors('firstName')? 'is-invalid':''}"
+									aria-describedby="emailHelp" placeholder="Enter your name"
+									id="fName" name="firstName" required="required"
+									th:value="${user.firstName}">
+
+								<div class="invalid-feedback"
+									th:each="e :${#fields.errors('firstName')}" th:text="${e}">
+								</div>
+							</div>
+
+
+
+							<!-- last Name Field -->
+							<div class="mb-3">
+								<label for="lName" class="form-label">Last Name </label> <input
+									type="text" class="form-control"
+									th:classappend="${#fields.hasErrors('lastName')? 'is-invalid':''}"
+									id="lName" name="lastName" aria-describedby="emailHelp"
+									placeholder="Enter your last name" required="required"
+									th:value="${user.lastName}">
+
+								<div class="invalid-feedback"
+									th:each="e :${#fields.errors('lastName')}" th:text="${e}">
+								</div>
+							</div>
+
+							<!-- email Field -->
+							<div class="mb-3">
+								<label for="emailId" class="form-label">Email address</label> <input
+									type="email" class="form-control"
+									th:classappend="${#fields.hasErrors('email')? 'is-invalid':''}"
+									id="emailId" name="email" aria-describedby="emailHelp"
+									required="required" placeholder="Enter your email"
+									th:value="${user.email}">
+
+								<div class="invalid-feedback"
+									th:each="e :${#fields.errors('email')}" th:text="${e}"></div>
+							</div>
+
+							<!-- password Field -->
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label> <input
+									type="password" class="form-control"
+									th:classappend="${#fields.hasErrors('password')? 'is-invalid':''}"
+									id="password" name="password" aria-describedby="emailHelp"
+									required="required" placeholder="Enter your password">
+
+								<div class="invalid-feedback"
+									th:each="e :${#fields.errors('password')}" th:text="${e}">
+								</div>
+							</div>
+
+							<!-- mobile Field -->
+							<div class="mb-3">
+								<label for="mobile" class="form-label">Mobile No </label> <input
+									type="text" class="form-control"
+									th:classappend="${#fields.hasErrors('mobileNo')? 'is-invalid':''}"
+									id="mobile" name="mobileNo" aria-describedby="emailHelp"
+									placeholder="Enter your mobile number" required="required"
+									th:value="${user.mobileNo}">
+
+								<div class="invalid-feedback"
+									th:each="e :${#fields.errors('mobileNo')}" th:text="${e}">
+								</div>
+							</div>
+
+							<!-- alternate mobile Field -->
+							<div class="mb-3">
+								<label for="altMobile" class="form-label">Alternate
+									Mobile No</label> <input type="text" class="form-control"
+									th:classappend="${#fields.hasErrors('alternateMobileNo')? 'is-invalid':''}"
+									name="alternateMobileNo" id="altMobile"
+									aria-describedby="emailHelp"
+									placeholder="Enter your alternate mobile number"
+									th:value="${user.alternateMobileNo}">
+
+								<div class="invalid-feedback"
+									th:each="e :${#fields.errors('alternateMobileNo')}"
+									th:text="${e}"></div>
+							</div>
+
+
+							<!-- user about field-->
+							<div class="form-group">
+
+								<textarea class="form-control"
+									th:classappend="${#fields.hasErrors('about')? 'is-invalid':''}"
+									placeholder="Enter Something about yourself" name="about"
+									id="about" rows="4" th:value="${user.about}">
+							   </textarea>
+								<div class="invalid-feedback"
+									th:each="e :${#fields.errors('about')}" th:text="${e}"></div>
+							</div>
+
+
+							<!-- terms and conditions agreement -->
+
+							<div class="form-group form-check mt-2">
+
+								<input type="checkbox" class="form-check-input" name="agreement"
+									id="agreement" /> <label for="agreement">Accept Terms
+									& Conditions</label>
+							</div>
+
+							<div class="container text-center mt-3">
+
+								<button type="submit"
+									class="btn bg-primary btn-block text-white">Register</button>
+								<button type="reset" class="btn bg-warning btn-block">Reset</button>
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

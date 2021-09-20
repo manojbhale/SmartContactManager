@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>SCM | About</title>
+</head>
+<body>
+	<section>
+		<div class="card">
+
+			<div class="card-body"></div>
+			<div class="text-center">
+				<img style="height: 200px; width: 200px;" class="contact_picture"
+					src="" th:src="@{'/images/user.png'}" alt="profile photo" />
+			</div>
+			<h2 class="text-center mt-3 text-secondary" style="margin-bottom: 140px;">You can save your
+				contact on Smart Contact Manager it will manage yours contacts on
+				Google Cloud</h2>
+
+<a th:href="@{/user/addContact}" class="btn btn-primary btn-block" style="font-weight: bold;margin-bottom: 20px;">Add New Contact</a>
+
+		</div>
+
+<script>
+$('.item').removeClass('active');
+$('#home-link').addClass('active');
+</script>
+
+
+	</section>
+</body>
+</html>

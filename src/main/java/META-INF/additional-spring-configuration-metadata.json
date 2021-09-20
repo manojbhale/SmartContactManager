@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "rspring.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'rspring.datasource.username'"
+  },
+  {
+    "name": "server.contextPath",
+    "type": "java.lang.String",
+    "description": "A description for 'server.contextPath'"
+  }
+]}
